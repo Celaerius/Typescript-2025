@@ -7,27 +7,27 @@
  */
 'use strict';
 function diff(arr) {
-    var len = arguments.length;
-    var idx = 0;
+    let len = arguments.length;
+    let idx = 0;
     while (++idx < len) {
         arr = diffArray(arr, arguments[idx]);
     }
     return arr;
 }
 ;
-var diffArray = function (one, two) {
+const diffArray = (one, two) => {
     if (!Array.isArray(two)) {
         return one.slice();
     }
-    var tlen = two.length;
-    var olen = one.length;
-    var idx = -1;
-    var arr = [];
+    let tlen = two.length;
+    let olen = one.length;
+    let idx = -1;
+    let arr = [];
     while (++idx < olen) {
-        var ele = one[idx];
-        var hasEle = false;
-        for (var i = 0; i < tlen; i++) {
-            var val = two[i];
+        let ele = one[idx];
+        let hasEle = false;
+        for (let i = 0; i < tlen; i++) {
+            let val = two[i];
             if (ele === val) {
                 hasEle = true;
                 break;
@@ -39,7 +39,7 @@ var diffArray = function (one, two) {
     }
     return arr;
 };
-var result1 = diff([1, 2, 3, 4]);
-console.log(result1); // Output: [1, 3]
-var result2 = diffArray([10, 20, 30, 40, 50], [20, 50, 60]);
+const result1 = diff([1, 2, 3, 4]);
+console.log(result1); // Output: [1, 2, 3, 4]
+const result2 = diffArray([10, 20, 30, 40, 50], [20, 50, 60]);
 console.log(result2); // Output: [10, 30, 40]
